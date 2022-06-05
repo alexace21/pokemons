@@ -18,13 +18,13 @@ const pokemonSchema = new mongoose.Schema({
     }
 });
 
-pokemonSchema.path('name').validate(function() {
-    return this.name >= 2 && this.name <= 10;
-}, 'Invalid pokemon title!')
+//pokemonSchema.path('name').validate(function() {
+//    return this.name >= 2 && this.name <= 10;
+//}, 'Invalid pokemon title!')
 
-pokemonSchema.path('description').validate(function() {
-    return this.description <= 10;
-}, 'Invalid pokemon description!')
+//pokemonSchema.path('description').validate(function() {
+//    return this.description <= 10;
+//}, 'Invalid pokemon description!')
 
 const Pokemon = mongoose.model('Pokemon', pokemonSchema);
 

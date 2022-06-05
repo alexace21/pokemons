@@ -13,6 +13,12 @@ router.get('/pokemons', async (req, res) => {
     res.render('pokemons', { pokemons });
 });
 
+router.get('/:pokemonId', async (req, res) => {
+    let pokemon = await Pokemon.findById({ _id: req.params.pokemonId }).lean();
+
+    res.render('pokemonDetails', { pokemon });
+})
+
 router.get('/pokemons/create', (req, res) => {
     res.render('createPokemon');
 })
