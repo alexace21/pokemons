@@ -1,9 +1,19 @@
 const mongoose = require('mongoose');
 
 const pokemonSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true,
+    },
     imageUrl: String,
-    difficultyLevel: Number
+    description: {
+        type: String,
+        required: true,
+    },
+    power: {
+        type: Number,
+        required: true,
+    }
 });
 
 const Pokemon = mongoose.model('Pokemon', pokemonSchema);

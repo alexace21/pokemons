@@ -14,7 +14,7 @@ mongoose.connect(url)
         console.log("DB error: " + err);
     })
 
-
+app.use(express.urlencoded({extended: false}));
 app.engine('hbs', handlebars.engine({
     extname: 'hbs'
 }));
