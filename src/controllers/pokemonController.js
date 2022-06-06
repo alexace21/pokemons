@@ -1,8 +1,12 @@
 const router = require('express').Router();
 const { Pokemon } = require('../models/Pokemon');
 
-router.get('/', (req, res) => {
-    res.render('home');
+const pokemonService = require('../services/pokemonService');
+
+router.get('/', async (req, res) => {
+    const pokemons = await Pokemon.find().lean();
+
+    res.render('home', { pokemons });
 });
 
 router.get('/pokemons', async (req, res) => {
@@ -20,6 +24,7 @@ router.get('/:pokemonId', async (req, res) => {
 })
 
 router.get('/pokemons/create', (req, res) => {
+
     res.render('createPokemon');
 })
 

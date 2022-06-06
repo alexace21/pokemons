@@ -6,7 +6,10 @@ const pokemonSchema = new mongoose.Schema({
         required: [true, 'Pokemon title is required!'],
         minlength: 2,
     },
-    imageUrl: String,
+    imageUrl: {
+        type: String,
+        required: [true, 'Pokemon imageUrl is required!']
+    },
     description: {
         type: String,
         required: [true, 'Pokemon description is required!'],
@@ -15,12 +18,14 @@ const pokemonSchema = new mongoose.Schema({
     power: {
         type: Number,
         required: [true, 'Pokemon power is required!'],
+        min: 1,
+        max: 6
     }
 });
 
-//pokemonSchema.path('name').validate(function() {
-//    return this.name >= 2 && this.name <= 10;
-//}, 'Invalid pokemon title!')
+pokemonSchema.path('imageUrl').validate(function() {
+    return this.imageUrl.startsWith('http');
+}, 'Invalid pokemon imageUrl!')
 
 //pokemonSchema.path('description').validate(function() {
 //    return this.description <= 10;
