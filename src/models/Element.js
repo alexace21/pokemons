@@ -14,6 +14,10 @@ const elementSchema = new mongoose.Schema({
                 return this.imageUrl.startsWith('http');
             }
         }
+    },
+    pokemon: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Pokemon'
     }
 });
 

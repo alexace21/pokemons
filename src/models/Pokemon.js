@@ -41,6 +41,12 @@ const pokemonSchema = new mongoose.Schema({
         required: [true, 'Pokemon type is required!'],
         minlength: 3,
     },
+    elements: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Element'
+        }
+    ]
 });
 
 pokemonSchema.path('imageUrl').validate(function() {
