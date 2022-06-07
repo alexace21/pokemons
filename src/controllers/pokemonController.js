@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const pokemonService = require('../services/pokemonService');
+const elementService = require('../services/elementService');
 
 router.get('/', async (req, res) => {
     const pokemons = await pokemonService.getAll();
@@ -33,8 +34,9 @@ router.post('/pokemons/create', async (req, res) => {
 
 router.get('/:pokemonId/attach-element', async (req, res) => {
     const pokemon = await pokemonService.getOne(req.params.pokemonId);
+    const elements = await elementService.getAll();
 
-    res.render('elements/attach', { pokemon });
+    res.render('elements/attach', { pokemon, elements });
 });
 
 

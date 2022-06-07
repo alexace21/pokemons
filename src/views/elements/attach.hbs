@@ -2,15 +2,15 @@
     <h1>Attach a new element</h1>
     <div class="form">
         <h2>{{pokemon.name}}</h2>
-        <img class="cube" src="https://c4.wallpaperflare.com/wallpaper/441/801/217/pixel-art-pixels-pokemon-go-pokemon-wallpaper-preview.jpg">
-        <form  method="POST">
-            <label for="accessory">Accessories</label>
+        <img class="cube"
+            src="https://c4.wallpaperflare.com/wallpaper/441/801/217/pixel-art-pixels-pokemon-go-pokemon-wallpaper-preview.jpg">
+        <form method="POST">
+            <label for="accessory">Elements</label>
             <select id="accessory" name="accessory" />
-            <option value="Accessory 1">Accessory 1</option>
-            <option value="Accessory 2">Accessory 2</option>
-            <option value="Accessory 3">Accessory 3</option>
-            <option value="Accessory 4">Accessory 4</option>
-            <option value="Accessory 5">Accessory 5</option>
+            {{#each elements}}
+            <option value="{{_id}}">{{type}}</option>
+            {{/each}}
+
             </select>
             <input type="submit" value="Attach">
         </form>
