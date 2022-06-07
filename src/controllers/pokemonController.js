@@ -1,24 +1,15 @@
 const router = require('express').Router();
-const { Pokemon } = require('../models/Pokemon');
 
 const pokemonService = require('../services/pokemonService');
 
 router.get('/', async (req, res) => {
-    const pokemons = await Pokemon.find().lean();
+    const pokemons = await pokemonService.getAll();
 
     res.render('home', { pokemons });
 });
 
-router.get('/pokemons', async (req, res) => {
-    const pokemons = await Pokemon.find().lean(); // cursor: use lean
-
-    console.log(pokemons);
-
-    res.render('pokemons', { pokemons });
-});
-
-router.get('/:pokemonId', async (req, res) => {
-    let pokemon = await Pokemon.findById({ _id: req.params.pokemonId }).lean();
+router.get('/pokemons/details/:pokemonId', async (req, res) => {
+    let pokemon = await pokemonService.getOne({ _id: req.params.pokemonId });
 
     res.render('pokemonDetails', { pokemon });
 })
@@ -34,10 +25,10 @@ router.post('/pokemons/create', async (req, res) => {
     // let savedPokemon = await pokemon.save();
 
     // Second way to create DB document
-    let savedPokemon = await Pokemon.create(req.body);
+    let savedPokemon = await pokemonService.create(req.body);
     console.log(savedPokemon);
 
-    res.redirect('/pokemons');
+    res.redirect('/');
 })
 
 

@@ -13,14 +13,34 @@ const pokemonSchema = new mongoose.Schema({
     description: {
         type: String,
         required: [true, 'Pokemon description is required!'],
-        maxlength: 120
+        maxlength: 200
     },
     power: {
         type: Number,
         required: [true, 'Pokemon power is required!'],
         min: 1,
-        max: 6
-    }
+        max: 100
+    },
+    height: {
+        type: String,
+        required: [true, 'Pokemon height is required!'],
+        minlength: 2,
+    },
+    weight: {
+        type: String,
+        required: [true, 'Pokemon weight is required!'],
+        minlength: 2,
+    },
+    category: {
+        type: String,
+        required: [true, 'Pokemon category is required!'],
+        minlength: 3,
+    },
+    type: {
+        type: String,
+        required: [true, 'Pokemon type is required!'],
+        minlength: 3,
+    },
 });
 
 pokemonSchema.path('imageUrl').validate(function() {

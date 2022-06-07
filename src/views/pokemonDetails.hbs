@@ -1,5 +1,26 @@
-<h1>{{pokemon.name}}</h1>
-
-<h1>{{pokemon.description}}</h1>
-
-<h1>{{pokemon.power}}</h1>
+<main>
+  <h1>{{pokemon.name}}</h1>
+  <img class="cube" src="{{pokemon.imageUrl}}">
+  <div class="details">
+    <p><span>Description:</span>{{pokemon.description}}</p>
+    <p><span>Power:</span> {{pokemon.power}}</p>
+    <p><span>Height:</span> {{pokemon.height}}</p>
+    <p><span>Weight:</span> {{pokemon.weight}}</p>
+    <p><span>Category:</span> {{pokemon.category}}</p>
+    <p><span>Type:</span> {{pokemon.type}}</p>
+    <a class="btn" href="/">Back</a>
+    <a class="btn" href="/pokemons/{{pokemon._id}}/add-element">Add Element</a>
+  </div>
+  <h2>Elements</h2>
+  <div class="accessories">
+    {{#each pokemon.elements}}
+    <div class="accessory">
+      <img src="{{imageUrl}}" alt="stickerName">
+      <h3>{{name}}</h3>
+      <p>{{description}}</p>
+    </div>
+    {{else}}
+   <h3 class="italic">This pokemon has no elements yet...</h3>
+  {{/each}}
+  </div>
+</main>
