@@ -31,6 +31,12 @@ router.post('/pokemons/create', async (req, res) => {
     res.redirect('/');
 })
 
+router.get('/:pokemonId/attach-element', async (req, res) => {
+    const pokemon = await pokemonService.getOne(req.params.pokemonId);
+
+    res.render('elements/attach', { pokemon });
+});
+
 
 
 module.exports = router;
