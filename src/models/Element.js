@@ -15,10 +15,12 @@ const elementSchema = new mongoose.Schema({
             }
         }
     },
-    pokemon: {
+    pokemons: [
+        {
         type: mongoose.Types.ObjectId,
         ref: 'Pokemon'
     }
+]
 });
 
 const Element = mongoose.model('Element', elementSchema);

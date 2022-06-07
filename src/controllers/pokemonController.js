@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
 
 router.get('/pokemons/details/:pokemonId', async (req, res) => {
     let pokemon = await pokemonService.getOne({ _id: req.params.pokemonId });
-
     res.render('pokemonDetails', { pokemon });
 })
 
@@ -39,6 +38,13 @@ router.get('/:pokemonId/attach-element', async (req, res) => {
     res.render('elements/attach', { pokemon, elements });
 });
 
+router.post('/:pokemonId/attach-element', async (req, res) => {
+    const elementId = req.body.element;
+
+    await pokemonService.attachElement(req.params.pokemonId, elementId);
+
+    res.redirect(`/pokemons/details/${req.params.pokemonId}`);
+});
 
 
 module.exports = router;
